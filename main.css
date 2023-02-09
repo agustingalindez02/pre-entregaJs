@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+:root{
+    --primary-color:black;
+    --secondary-color:white;
+}
+
+.dark-theme{
+    --primary-color:white;
+    --secondary-color:black;
+}
+
+
+body{
+    color:var(--primary-color);
+    background-color:var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+}
+
+a{
+    display: flex;
+    text-decoration: none;
+    color:var(--primary-color);
+}
+
+html{
+    font-size: 1rem;
+    scroll-behavior: smooth;
+}
+
+img{
+    width: 1rem;
+}
+.fa-cart-shopping{
+    color:var(--primary-color);
+}
+nav{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.links{
+    gap: 1rem;
+    display: flex;
+}
+
+h1{
+    display: grid;
+    justify-items: center;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+}
+
+.nombre{
+    text-transform: uppercase;
+    font-weight: bold;
+}
