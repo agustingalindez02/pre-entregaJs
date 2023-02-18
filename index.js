@@ -1,15 +1,16 @@
 let boton = document.getElementById("icon")
-boton.addEventListener("click", function(){
+boton.addEventListener("click", function () {
     document.body.classList.toggle("dark-theme");
-    if(document.body.classList.contains("dark-theme")){
+    if (document.body.classList.contains("dark-theme")) {
         icon.src = "asetts/sun-solid.png";
-    }else{
+    } else {
         icon.src = "asetts/moon-solid.svg";
-        
+
     }
 
 })
 
+const lista_productos = []
 
 let form = document.querySelector("form")
 form.addEventListener("submit", function (e) {
@@ -25,12 +26,12 @@ agregar.addEventListener("click", function () {
     let stock = document.getElementById("stock").value;
     let imagen = document.getElementById("imagen").value;
 
-    if ((nombre != "") || (descripcion != "") || (codigo != "") || (precio != 0) || (stock != 0)) {
+    let lista = document.getElementById("lista-productos");
+    let section = document.getElementById("products");
+    let li = document.createElement("li");
+    let div = document.createElement("div");
 
-        let lista = document.getElementById("lista-productos");
-        let li = document.createElement("li")
-
-        li.innerHTML = `<li>Nombre:${nombre}</li>
+    li.innerHTML = `<li>Nombre:${nombre}</li>
         <li>Descripcion:${descripcion}</li>
         <li>Precio:${precio}</li>
         <li>Stock:${stock}</li>
@@ -38,39 +39,61 @@ agregar.addEventListener("click", function () {
         <button id="borrar">Borrar</button>
         <button id="editar">Editar</button>`;
 
-        lista.append(li)
+    lista.append(li)
 
-        const producto = {
-            nombre: `${nombre}`,
-            descripcion: `${descripcion}`,
-            precio: `${precio}`,
-            stock: `${stock}`,
-            imagen: `${imagen}`,
-        }
+    div.innerHTML =
+        `<div class="products">
+            <div class="card">
+            <img src="${imagen}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">${nombre}</h5>
+                <p class="card-text">${descripcion}</p>
+                <button id="add-cart">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>`;
 
-        let borrar = document.getElementById("borrar")
-        borrar.addEventListener("click", function () {
-            li.remove()
-        })
+    //section.append(div)
+
+    const producto = {
+        nombre: `${nombre}`,
+        descripcion: `${descripcion}`,
+        precio: `${precio}`,
+        stock: `${stock}`,
+        imagen: `${imagen}`,
     }
 
+    lista_productos.push(producto)
+    let lista_JSON = JSON.stringify(lista_productos);
+    localStorage.setItem("productos", lista_JSON);
+
+    console.log(lista_productos)
 
 
 
+
+    let borrar = document.getElementById("borrar")
+    borrar.addEventListener("click", function () {
+
+        let list = localStorage.getItem("productos");
+        console.log(list)
+        let lista_obj = JSON.parse(list)
+        console.log(lista_obj)
+        let index = lista_obj.indexOf(producto)
+        lista_obj.splice(index, 1)
+
+
+
+        li.remove()
+        //div.remove()
+    })
     /*let editar = document.getElementById("editar")
     editar.addEventListener("click", function (){
         li.
     })*/
 
-
-
 })
 
 
-const id = 0
-
-id++
-
-console.log(id)
 
 

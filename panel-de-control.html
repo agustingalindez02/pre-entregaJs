@@ -23,10 +23,9 @@
     <header>
         <nav>
             <div>
-                <p class="nombre">Exotic</p>
+                <a href="./index.html"><p class="nombre">Exotic</p></a>
             </div>
             <div class="links">
-                <a href="./index.html">Home</a>
                 <a href="./panel-de-control.html">Dashboard
                 </a>
             </div>
@@ -36,8 +35,8 @@
         </nav>
     </header>
     <main>
-        <section>
-            <form style="display: flex; flex-direction: column;" action="">
+        <section id="dashboard">
+            <form action="">
                 <input required type="text" id="nombre" placeholder="Nombre">
                 <textarea id="descripcion" required cols="30" placeholder="Descripcion" rows="10"></textarea>
                 <input type="number" required id="precio" placeholder="Precio">
@@ -45,6 +44,8 @@
                 <input type="file" id="imagen" placeholder="Imagen">
                 <button id="agregar">Agregar Producto</button>
             </form>
+        </section>
+        <section>
             <ul id="lista-productos">
 
             </ul>
